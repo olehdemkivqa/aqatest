@@ -1,0 +1,26 @@
+{
+  "name": "pl",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/bun": "latest",
+    "@types/node": "^25.6.0",
+    "playwright": "^1.59.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "scripts": {
+    "test": "bun playwright test",
+    "api": "bun playwright test --project=api-tests",
+    "test ui": "bun playwright test --ui",
+    "test:headed": "bun playwright test --headed",
+    "test:debug": "bun playwright test --debug"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.4.0",
+    "dotenv": "^17.4.2"
+  }
+}
