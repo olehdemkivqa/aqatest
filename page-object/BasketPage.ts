@@ -15,7 +15,7 @@ export class BasketPage {
         this.addFirstItemButton = page.locator('[id="cart-item-increase-6"]')
     }
     
-    async checkTotalPrice() {
+    async goToCheckoutPage() {
         await this.checkoutButton.click()
         await this.page.waitForURL('/checkout')
     }
