@@ -13,9 +13,8 @@
     "typescript": "^5"
   },
   "scripts": {
-    "test": "bun playwright test",
+    "ui-e2e": "bun playwright test --project=e2e-tests",
     "api": "bun playwright test --project=api-tests",
-    "test ui": "bun playwright test --ui",
     "test:headed": "bun playwright test --headed",
     "test:debug": "bun playwright test --debug"
   },
