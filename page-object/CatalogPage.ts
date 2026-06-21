@@ -1,5 +1,16 @@
+import { type Page, type Locator } from '@playwright/test'
+
 export class CatalogPage {
-    constructor(page) {
+    readonly page: Page
+    readonly coffeeMachineProduct: Locator
+    readonly tabletProduct: Locator
+    readonly basketCount: Locator
+    readonly tabletName: Locator
+    readonly coffeeMachineName: Locator
+    readonly tabletPrice: Locator
+    readonly coffeeMachinePrice: Locator
+
+    constructor(page: Page) {
         this.page = page
         this.coffeeMachineProduct = page.locator('[id="product-add-6"]')
         this.tabletProduct = page.locator('[id="product-add-5"]')

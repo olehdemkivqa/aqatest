@@ -1,5 +1,12 @@
+import { type Page, type Locator } from '@playwright/test'
+
 export class MyAccountPage {
-    constructor(page) {
+    readonly page: Page
+    readonly items: Locator
+    readonly totalAmountField: Locator
+    readonly logoutButton: Locator
+
+    constructor(page: Page) {
         this.page = page
 
         this.items = page.locator('#account-order-0 ul > li')

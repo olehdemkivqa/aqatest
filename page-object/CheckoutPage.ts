@@ -1,5 +1,15 @@
+import { type Page, type Locator } from '@playwright/test'
+
 export class CheckoutPage {
-    constructor(page) {
+    readonly page: Page
+    readonly cardNumberField: Locator
+    readonly payNowBtn: Locator
+    readonly cardDate: Locator
+    readonly cardCVV: Locator
+    readonly successOrder: Locator
+    readonly myAccountBtn: Locator
+
+    constructor(page: Page) {
         this.page = page
         this.cardNumberField = page.getByPlaceholder('Card Number (16 digits)')
         this.payNowBtn = page.getByRole('button', { name: 'Pay Now' })
@@ -9,7 +19,7 @@ export class CheckoutPage {
         this.myAccountBtn = page.locator('[href="/account"]')
     }
 
-    async fillPaymentData(cardNumber, cardDate, cardCVV) {
+    async fillPaymentData(cardNumber: string, cardDate: string, cardCVV: string) {
         await this.cardNumberField.type(cardNumber, { delay: 100 })
         await this.cardNumberField.press('Enter')
         await this.cardDate.fill(cardDate)

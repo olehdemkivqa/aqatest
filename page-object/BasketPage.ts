@@ -1,5 +1,17 @@
+import { type Page, type Locator } from '@playwright/test'
+
 export class BasketPage {
-    constructor(page, tabletNameValue, coffeeMachineNameValue, tabletPriceValue, coffeeMachinePriceValue) {
+    readonly page: Page
+    readonly firstProductItem: Locator
+    readonly secondProductItem: Locator
+    readonly firstItemPrice: Locator
+    readonly secondItemPrice: Locator
+    readonly totalPrice: Locator
+    readonly checkoutButton: Locator
+    readonly removeFirstItemButton: Locator
+    readonly addFirstItemButton: Locator
+
+    constructor(page: Page) {
         this.page = page
         this.firstProductItem = page.locator('[id="cart-item-name-6"]')
         this.secondProductItem = page.locator('[id="cart-item-name-5"]')

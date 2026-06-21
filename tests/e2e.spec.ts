@@ -19,7 +19,7 @@ test('Create user login, order 2 items, payment', async ({ page }) => {
     const myAccount = new MyAccountPage(page)
     const basketPage = new BasketPage(page)
 
-    let items;
+    let items: any;
 
     await test.step('Open Login page', async () => {
         await registerPage.openLoginPage()

@@ -1,6 +1,21 @@
+import { type Page, type Locator } from '@playwright/test'
+import { type newUser1 } from '../data/testData'
+
 export class RegisterPage {
-    
-    constructor(page) {
+    readonly page: Page
+    readonly registerBtn: Locator
+    readonly firstNameInput: Locator
+    readonly lastNameInput: Locator
+    readonly emailInput: Locator
+    readonly passwordInput: Locator
+    readonly cityInput: Locator
+    readonly countryDropdown: Locator
+    readonly phoneInput: Locator
+    readonly streetInput: Locator
+    readonly zipCodeInput: Locator
+    readonly submitRegisterBtn: Locator
+
+    constructor(page: Page) {
         this.page = page
         this.registerBtn = page.locator('[id=login-register-button]')
         this.firstNameInput = page.locator('[id=register-first-name]')
@@ -19,7 +34,7 @@ export class RegisterPage {
         await this.page.goto('/login')
     }
 
-    async fillRegistrationForm(testData) {
+    async fillRegistrationForm(testData: typeof newUser1) {
       await this.registerBtn.click()
       await this.firstNameInput.fill(testData.firstName)
       await this.lastNameInput.fill(testData.lastName)
