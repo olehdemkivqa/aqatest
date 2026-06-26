@@ -11,7 +11,34 @@ import { expect } from '@playwright/test'
 
 test.setTimeout(50 * 1000)
 
-test('Create user login, order 2 items, payment', async ({ page }) => {
+test.describe('E2E order flow', () => {
+
+    test.beforeAll(async () => {
+        console.log('beforeAll prepare test data')
+        console.log('beforeAll generate user')
+        console.log('beforeAll ready')
+    })
+
+    test.beforeEach(async () => {
+        console.log('beforeEach preconditions')
+    })
+
+    test.afterEach(async ( {page}, testInfo ) => {
+        if (testInfo.status !== testInfo.expectedStatus){
+            console.log(`afterEach: test failed ${testInfo.title}`)
+
+            await page.screenshot( {
+                path: `test-results/${testInfo.title} --failed.png`,
+                fullPage: true,
+            })
+        }
+    })
+
+    test.afterAll(async () => {
+        console.log('afterAll cleanup test data')
+    })
+
+    test('Create user login, order 2 items, payment', async ({ page }) => {
     const registerPage = new RegisterPage(page)
     const loginPage = new LoginPage(page)
     const catalogPage = new CatalogPage(page)
@@ -92,4 +119,5 @@ test('Create user login, order 2 items, payment', async ({ page }) => {
     await test.step('Logout', async () => {
         await myAccount.logout()
     })
+})
 })
