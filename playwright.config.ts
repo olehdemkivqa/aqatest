@@ -40,6 +40,13 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'setup-ui',
+      testMatch: 'auth.setup.ts',
+      use: {
+        baseURL: process.env.UI_BASE_URL,
+      },
+    },
+    {
       name: 'chromium',
       testIgnore: 'api.spec.ts',
       use: { ...devices['Desktop Chrome'] },
@@ -48,8 +55,10 @@ export default defineConfig({
     {
       name: 'e2e-tests',
       testMatch: 'e2e.spec.ts',
+      dependencies: ['setup-ui'],
       use: {
         baseURL: process.env.UI_BASE_URL,
+        storageState: 'data/storageState.json'
       },
     },
 

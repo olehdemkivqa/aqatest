@@ -1,7 +1,7 @@
 import { test } from '@playwright/test'
-import { RegisterPage } from '../page-object/RegisterPage'
-import { LoginPage } from '../page-object/LoginPage'
-import { newUser1 } from '../data/testData'
+// // import { RegisterPage } from '../page-object/RegisterPage'
+// // import { LoginPage } from '../page-object/LoginPage'
+// import { newUser1 } from '../data/testData'
 import { cardData } from '../data/testData'
 import { CatalogPage } from '../page-object/CatalogPage'
 import { BasketPage } from '../page-object/BasketPage'
@@ -19,8 +19,9 @@ test.describe('E2E order flow', () => {
         console.log('beforeAll ready')
     })
 
-    test.beforeEach(async () => {
+    test.beforeEach(async ({page}) => {
         console.log('beforeEach preconditions')
+        await page.goto('/')
     })
 
     test.afterEach(async ( {page}, testInfo ) => {
@@ -39,26 +40,12 @@ test.describe('E2E order flow', () => {
     })
 
     test('Create user login, order 2 items, payment', async ({ page }) => {
-    const registerPage = new RegisterPage(page)
-    const loginPage = new LoginPage(page)
     const catalogPage = new CatalogPage(page)
     const checkoutPage = new CheckoutPage(page)
     const myAccount = new MyAccountPage(page)
     const basketPage = new BasketPage(page)
 
     let items: any;
-
-    await test.step('Open Login page', async () => {
-        await registerPage.openLoginPage()
-    })
-
-    await test.step('Register new user', async () => {
-        await registerPage.fillRegistrationForm(newUser1)
-    })
-
-    await test.step('Login with created user', async () => {
-        await loginPage.login(newUser1.email, newUser1.password)
-    })
 
     await test.step('Select 2 items', async () => {
         items = await catalogPage.selectProduct()
