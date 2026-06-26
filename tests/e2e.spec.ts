@@ -20,7 +20,7 @@ test.describe('E2E order flow', () => {
     })
 
     test.beforeEach(async ({page}) => {
-        console.log('beforeEach preconditions')
+        console.log('beforeEach open catalog page')
         await page.goto('/')
     })
 
