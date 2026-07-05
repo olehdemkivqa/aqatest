@@ -1,7 +1,4 @@
 import { test } from '@playwright/test'
-// // import { RegisterPage } from '../page-object/RegisterPage'
-// // import { LoginPage } from '../page-object/LoginPage'
-// import { newUser1 } from '../data/testData'
 import { cardData } from '../data/testData'
 import { CatalogPage } from '../page-object/CatalogPage'
 import { BasketPage } from '../page-object/BasketPage'
@@ -9,7 +6,6 @@ import { CheckoutPage } from '../page-object/CheckoutPage'
 import { MyAccountPage } from '../page-object/MyAccountPage'
 import { expect } from '@playwright/test'
 
-test.setTimeout(50 * 1000)
 
 test.describe('E2E order flow', () => {
 
