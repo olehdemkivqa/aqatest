@@ -7,7 +7,7 @@ import { MyAccountPage } from '../page-object/MyAccountPage'
 import { expect } from '@playwright/test'
 
 
-test.describe('E2E order flow', () => {
+test.describe('E2E order flow test', () => {
 
     test.beforeAll(async () => {
         console.log('beforeAll prepare test data')
